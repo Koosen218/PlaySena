@@ -8,7 +8,7 @@ function Ranking() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => {   
     const fetchRanking = async () => {
       try {
         const data = await listarRanking();

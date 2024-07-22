@@ -51,10 +51,15 @@ export const listarRanking = async () => {
 
 export const obtenerAyuda = async () => {
   try {
-    const response = await ApiService.get('/users/ayuda');
-    return response.data; // Devuelve los datos de la respuesta
+    const response = await ApiService.get('/users/ayuda'); // Asegúrate de que esta es la ruta correcta
+    if (response.status === 200) {
+      return response.data; // Devuelve solo los datos
+    } else {
+      console.error('Error en la respuesta de la API:', response);
+      return [];
+    }
   } catch (error) {
     console.error('Error al obtener ayuda:', error);
-    return Promise.reject(error.response); // Propaga el error
+    return []; // Devuelve un array vacío en caso de error
   }
 };
